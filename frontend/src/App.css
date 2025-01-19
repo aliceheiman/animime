@@ -1,0 +1,314 @@
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@300;400;700&display=swap');
+
+/* Base styles */
+:root {
+  --primary-color: #e52e71;
+  --secondary-color: #ff8a00;
+  --bg-color: #f4f1de;
+}
+
+body {
+  margin: 0;
+  font-family: 'Comic Neue', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: 'Bangers', cursive;
+  color: var(--primary-color);
+}
+
+.font-spartan {
+  font-family: 'Bangers', cursive;
+}
+
+.font-franklin {
+  font-family: 'Comic Neue', cursive;
+}
+
+/* Upload section styles */
+.file-input-container {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed var(--primary-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.file-input-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(229, 46, 113, 0.05), 
+    rgba(255, 138, 0, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.file-input-container:hover::before {
+  opacity: 1;
+}
+
+.file-input-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 46, 113, 0.15);
+  border-color: var(--secondary-color);
+}
+
+.file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-input-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  fill: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.file-input-container:hover .upload-icon {
+  transform: scale(1.1);
+}
+
+.file-input-text {
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.1rem;
+  color: #333;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.selected-file {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-top: 0.25rem;
+}
+
+.upload-button {
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(229, 46, 113, 0.2);
+}
+
+.upload-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 46, 113, 0.3);
+}
+
+.upload-button:disabled {
+  background: linear-gradient(45deg, #666, #999);
+  transform: none;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.upload-button::before,
+.upload-button::after {
+  content: '✨';
+  position: absolute;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.upload-button::before {
+  left: 15px;
+}
+
+.upload-button::after {
+  right: 15px;
+}
+
+.upload-button:hover::before,
+.upload-button:hover::after {
+  opacity: 1;
+}
+
+.upload-text {
+  color: #e52e71;
+}
+
+.error-message {
+  color: #ff4444;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Value props section */
+#value-props {
+  margin-top: 4rem;
+}
+
+#value-props h2 {
+  color: var(--primary-color);
+}
+
+/* Waitlist section styles */
+#waitlist-container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(229, 46, 113, 0.1);
+  border-bottom: 1px solid rgba(229, 46, 113, 0.1);
+}
+
+#waitlist-container input,
+#waitlist-container textarea {
+  font-size: 1rem;
+  background: transparent;
+}
+
+#waitlist-container input:focus,
+#waitlist-container textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+#waitlist-container button {
+  transition: all 0.3s ease;
+}
+
+#waitlist-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 46, 113, 0.25);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .upload-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .file-input-text {
+    font-size: 0.9rem;
+  }
+  
+  .upload-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Container styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(229, 46, 113, 0.1) 0%, transparent 50%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Upload section styles */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Result section styles */
+.result-section {
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+}
+
+.result-section p {
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Root styles */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: #444;
+  margin-bottom: 1rem;
+}
