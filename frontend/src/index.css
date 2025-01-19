@@ -1,0 +1,128 @@
+:root {
+  font-family: 'Comic Neue', cursive;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #2a1b3d;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, rgba(42, 27, 61, 0.9) 0%, rgba(42, 27, 61, 0.95) 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Anime Background Elements */
+body::before {
+  content: '';
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23e52e71' opacity='0.1' d='M50 0 L100 50 L50 100 L0 50z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='20' fill='%23ff8a00' opacity='0.1'/%3E%3C/svg%3E");
+  background-position: 0 0, 30px 30px;
+  background-size: 100px 100px, 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Floating Elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(20px) rotate(-5deg); }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    /* Sakura petals */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 0 C12 5 15 8 20 10 C15 12 12 15 10 20 C8 15 5 12 0 10 C5 8 8 5 10 0' fill='%23e52e71' opacity='0.2'/%3E%3C/svg%3E"),
+    /* Stars */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15'%3E%3Cpath d='M7.5 0 L9 5 L14 7.5 L9 10 L7.5 15 L6 10 L1 7.5 L6 5 Z' fill='%23ff8a00' opacity='0.2'/%3E%3C/svg%3E"),
+    /* Sparkles */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='2' fill='white' opacity='0.3'/%3E%3C/svg%3E");
+  background-position: 
+    calc(10% + (var(--x, 0) * 1px)) calc(20% + (var(--y, 0) * 1px)),
+    calc(80% + (var(--x, 0) * -0.5px)) calc(60% + (var(--y, 0) * -0.5px)),
+    calc(30% + (var(--x, 0) * 0.3px)) calc(90% + (var(--y, 0) * 0.3px));
+  background-repeat: repeat;
+  background-size: 
+    20px 20px,
+    15px 15px,
+    10px 10px;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Additional floating elements */
+.floating-element {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.floating-element:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+  top: 70%;
+  right: 10%;
+  animation: float-reverse 25s ease-in-out infinite;
+}
+
+h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-shadow: 3px 3px 0 #e52e71,
+               6px 6px 0 #ff8a00;
+  letter-spacing: 2px;
+  margin-bottom: 0.5em;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: #ff8a00;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2em;
+}
+
+button {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+/* Mouse movement effect */
+body {
+  cursor: default;
+}
